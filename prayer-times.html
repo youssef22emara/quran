@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>أوقات الصلاة - القاهرة</title>
+    <link rel="stylesheet" href="css/prayer-times.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="imges/quran.ico">
+</head>
+<body>
+    <header class="header">
+        <a class="icon-head" href="index.html"><i class="fas fa-clock"></i> أوقات الصلاة</a>
+        <nav class="nav-links">
+            <a href="zekr/azkar.html"><i class="fas fa-hands-praying"></i> أذكار</a>
+            <a href="ramadan.html"><i class="fas fa-moon"></i> رمضان</a>
+            <a href="eid.html"><i class="fas fa-person-dress"></i> العيد</a>
+            <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+        </nav>
+        <button class="menu-toggle" aria-label="فتح القائمة">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <main class="main-content">
+        <div class="prayer-times-container">
+            <div class="prayer-times-header">
+                <h1><i class="fas fa-clock"></i> أوقات الصلاة - القاهرة</h1>
+                <p class="prayer-subtitle">الصلاة عماد الدين</p>
+                <div class="next-prayer">
+                    <span class="next-prayer-text">الصلاة القادمة:</span>
+                    <span class="next-prayer-name">جاري التحميل...</span>
+                    <span class="countdown">--:--:--</span>
+                </div>
+            </div>
+            
+            <div class="prayer-times-grid">
+                <div class="prayer-time-card" data-prayer="fajr" data-time-type="day">
+                    <div class="prayer-icon">
+                        <i class="fas fa-cloud-moon"></i>
+                    </div>
+                    <div class="prayer-name">الفجر</div>
+                    <div class="prayer-time">
+                        <span class="time-value">--:--</span>
+                        <span class="time-period"></span>
+                    </div>
+                </div>
+                <div class="prayer-time-card" data-prayer="sunrise" data-time-type="day">
+                    <div class="prayer-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="prayer-name">الشروق</div>
+                    <div class="prayer-time">
+                        <span class="time-value">--:--</span>
+                        <span class="time-period"></span>
+                    </div>
+                </div>
+                <div class="prayer-time-card" data-prayer="dhuhr" data-time-type="day">
+                    <div class="prayer-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="prayer-name">الظهر</div>
+                    <div class="prayer-time">
+                        <span class="time-value">--:--</span>
+                        <span class="time-period"></span>
+                    </div>
+                </div>
+                <div class="prayer-time-card" data-prayer="asr" data-time-type="day">
+                    <div class="prayer-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="prayer-name">العصر</div>
+                    <div class="prayer-time">
+                        <span class="time-value">--:--</span>
+                        <span class="time-period"></span>
+                    </div>
+                </div>
+                <div class="prayer-time-card" data-prayer="maghrib" data-time-type="night">
+                    <div class="prayer-icon">
+                        <i class="fas fa-cloud-moon"></i>
+                    </div>
+                    <div class="prayer-name">المغرب</div>
+                    <div class="prayer-time">
+                        <span class="time-value">--:--</span>
+                        <span class="time-period"></span>
+                    </div>
+                </div>
+                <div class="prayer-time-card" data-prayer="isha" data-time-type="night">
+                    <div class="prayer-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="prayer-name">العشاء</div>
+                    <div class="prayer-time">
+                        <span class="time-value">--:--</span>
+                        <span class="time-period"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/prayer-times.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+ /* زر القائمة - افتراضي مخفي */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* موبايل أقل من 500px */
+@media (max-width: 500px) {
+    .header {
+        flex-direction:row;
+        padding: 10px 20px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 90px;
+        right: 0;
+        width: 100%;
+        background: rgba(26, 26, 26, 0.95);
+        backdrop-filter: blur(8px);
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        border-radius: 20px;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.35s ease;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        transform: scaleY(1);
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+}

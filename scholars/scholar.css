@@ -1,0 +1,762 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.header {
+    width: 100%;
+    height: 80px;
+    padding: 0 1.5rem;
+    background: linear-gradient(90deg, rgba(26, 15, 53, 0.98) 0%, rgba(61, 31, 92, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-links a i {
+    margin-left: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.nav-links a:hover {
+    color: #FFD700;
+    border-color: rgba(255, 193, 7, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.25);
+    background: rgba(255, 193, 7, 0.1);
+}
+
+.back-to-home {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 193, 7, 0.1);
+    border: 2px solid rgba(255, 193, 7, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(255, 193, 7, 0.08);
+}
+
+.back-to-home:hover {
+    background: rgba(255, 193, 7, 0.2);
+    border-color: rgba(255, 193, 7, 0.6);
+    color: #FFD700;
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.25);
+}
+
+.back-to-home i {
+    transition: transform 0.3s;
+}
+
+.back-to-home:hover i {
+    transform: translateX(-4px) scale(1.1);
+}
+
+.scholar-page {
+    margin-top: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem 1rem 3rem 1rem;
+}
+
+.scholar-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+.scholar-header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #FFD700;
+    box-shadow: 0 8px 32px rgba(255, 193, 7, 0.25);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.scholar-header img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(255, 193, 7, 0.35);
+}
+
+.scholar-info {
+    text-align: center;
+}
+
+.scholar-info h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFC107 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+}
+
+.scholar-info p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+}
+
+.audio-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 900px;
+    justify-content: center;
+}
+
+.surah-list {
+    background: linear-gradient(135deg, rgba(232, 44, 45, 0.15), rgba(231, 76, 60, 0.15));
+    border: 2px solid rgba(231, 76, 60, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(231, 76, 60, 0.15);
+    padding: 1.8rem 1.2rem;
+    width: 100%;
+    max-width: 380px;
+    max-height: 450px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #e74c3c #1a1a2e;
+}
+
+.surah-list h2 {
+    color: #FFD700;
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.surah-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.surah-list li {
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.4rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-left: 3px solid transparent;
+}
+
+.surah-list li:hover, .surah-list li.active {
+    background: rgba(231, 76, 60, 0.25);
+    color: #FFD700;
+    border-left-color: #e74c3c;
+    transform: translateX(-8px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+}
+
+.audio-player {
+    background: linear-gradient(135deg, rgba(232, 44, 45, 0.15), rgba(231, 76, 60, 0.15));
+    border: 2px solid rgba(231, 76, 60, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(231, 76, 60, 0.15);
+    padding: 2.2rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    min-height: 450px;
+}
+
+.audio-player img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #FFD700;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 32px rgba(255, 193, 7, 0.25);
+    transition: all 0.3s ease;
+}
+
+.audio-player img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(255, 193, 7, 0.35);
+}
+
+#current-surah {
+    margin-bottom: 1.2rem;
+    color: #FFD700;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+audio {
+    width: 100%;
+    outline: none;
+    margin-top: 1rem;
+}
+
+/* اجعلهم بنفس الطول والعرض */
+.surah-list,
+.audio-player {
+    width: 100%;
+    max-width: 380px;
+    min-width: 280px;
+    min-height: 450px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Scrollbar Styling */
+.surah-list ul::-webkit-scrollbar {
+    width: 8px;
+    background: rgba(255, 193, 7, 0.1);
+    border-radius: 8px;
+}
+
+.surah-list ul::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #FFD700 40%, #FFC107 100%);
+    border-radius: 8px;
+}
+
+.surah-list ul::-webkit-scrollbar-thumb:hover {
+    background: #e74c3c;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .scholar-page {
+        padding: 2rem 1rem;
+    }
+
+    .scholar-header {
+        padding: 1rem;
+    }
+
+    .scholar-header img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .scholar-info h1 {
+        font-size: 2rem;
+    }
+
+    .audio-section {
+        gap: 2rem;
+    }
+
+    .surah-list,
+    .audio-player {
+        max-width: 360px;
+        min-height: 420px;
+        padding: 1.6rem;
+    }
+
+    .audio-player img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 992px) {
+    .audio-section {
+        flex-direction: column;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .surah-list {
+        max-height: 400px;
+    }
+
+    .audio-player {
+        min-height: 400px;
+    }
+
+    .scholar-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .scholar-header img {
+        width: 130px;
+        height: 130px;
+    }
+
+    .scholar-info h1 {
+        font-size: 1.8rem;
+    }
+
+    .surah-list,
+    .audio-player {
+        max-width: 340px;
+        padding: 1.5rem;
+    }
+
+    .surah-list li {
+        padding: 0.7rem 0.9rem;
+        font-size: 1rem;
+    }
+
+    .audio-player img {
+        width: 110px;
+        height: 110px;
+        margin-bottom: 1rem;
+    }
+
+    #current-surah {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: row;
+        height: 70px;
+        padding: 0 1rem;
+        gap: 0.5rem;
+        border-radius: 0 0 15px 15px;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(180deg, rgba(26, 15, 53, 0.98) 0%, rgba(61, 31, 92, 0.98) 100%);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        z-index: 999;
+        padding: 0.5rem 0;
+        border-bottom: 2px solid rgba(255, 193, 7, 0.3);
+        animation: slideDown 0.4s ease;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 1rem 1.5rem;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 193, 7, 0.15);
+        transform: translateX(-8px);
+        box-shadow: none;
+    }
+
+    .back-to-home {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .scholar-page {
+        margin-top: 120px;
+        padding: 1.5rem 0.8rem;
+    }
+
+    .scholar-header {
+        margin-bottom: 2rem;
+    }
+
+    .scholar-header img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1rem;
+    }
+
+    .scholar-info h1 {
+        font-size: 1.6rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .scholar-info p {
+        font-size: 1rem;
+    }
+
+    .audio-section {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .surah-list {
+        padding: 1.4rem 1rem;
+        max-height: 380px;
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+    .surah-list h2 {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+    }
+
+    .surah-list li {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .audio-player {
+        padding: 1.4rem 1rem;
+        max-width: 100%;
+        min-width: 100%;
+        min-height: 380px;
+    }
+
+    .audio-player img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 1rem;
+    }
+
+    #current-surah {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-15px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 0 0.8rem;
+        height: 65px;
+    }
+
+    .back-to-home {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    .nav-links {
+        top: 65px;
+    }
+
+    .nav-links a {
+        font-size: 0.95rem;
+        padding: 0.8rem 1.2rem;
+    }
+
+    .scholar-page {
+        margin-top: 110px;
+        padding: 1rem 0.6rem;
+    }
+
+    .scholar-header img {
+        width: 110px;
+        height: 110px;
+        margin-bottom: 0.8rem;
+    }
+
+    .scholar-info h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .scholar-info p {
+        font-size: 0.95rem;
+    }
+
+    .audio-section {
+        gap: 1rem;
+    }
+
+    .surah-list {
+        padding: 1.2rem 0.8rem;
+        max-height: 350px;
+        max-width: 100%;
+    }
+
+    .surah-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .surah-list li {
+        padding: 0.6rem 0.7rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .audio-player {
+        padding: 1.2rem 0.8rem;
+        max-width: 100%;
+        min-height: 350px;
+    }
+
+    .audio-player img {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 0.8rem;
+    }
+
+    #current-surah {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    audio {
+        margin-top: 0.8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .header {
+        padding: 0 0.6rem;
+        height: 60px;
+    }
+
+    .back-to-home {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .nav-links {
+        top: 60px;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .scholar-page {
+        margin-top: 100px;
+        padding: 0.8rem 0.4rem;
+    }
+
+    .scholar-header img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 0.6rem;
+    }
+
+    .scholar-info h1 {
+        font-size: 1.3rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .scholar-info p {
+        font-size: 0.9rem;
+    }
+
+    .surah-list {
+        padding: 1rem 0.6rem;
+        max-height: 320px;
+    }
+
+    .surah-list h2 {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .surah-list li {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.6rem;
+    }
+
+    .audio-player {
+        padding: 1rem 0.6rem;
+        min-height: 320px;
+    }
+
+    .audio-player img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 0.6rem;
+    }
+
+    #current-surah {
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .scholar-page {
+        max-width: 1400px;
+    }
+
+    .scholar-header img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .scholar-info h1 {
+        font-size: 2.8rem;
+    }
+
+    .scholar-info p {
+        font-size: 1.3rem;
+    }
+
+    .audio-section {
+        gap: 3rem;
+    }
+
+    .surah-list {
+        max-height: 500px;
+        max-width: 400px;
+        padding: 2rem 1.4rem;
+    }
+
+    .surah-list h2 {
+        font-size: 1.4rem;
+    }
+
+    .surah-list li {
+        padding: 0.9rem 1.1rem;
+        font-size: 1.1rem;
+    }
+
+    .audio-player {
+        max-width: 400px;
+        min-height: 500px;
+        padding: 2.5rem 2rem;
+    }
+
+    .audio-player img {
+        width: 140px;
+        height: 140px;
+    }
+
+    #current-surah {
+        font-size: 1.3rem;
+    }
+}
+
+/* زر القائمة - hamburger menu */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    gap: 6px;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.menu-toggle:hover span {
+    background: #FFD700;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+    background: #FFD700;
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+    background: #FFD700;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+}

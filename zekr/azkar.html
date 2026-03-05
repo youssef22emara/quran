@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a0f35">
+    <title>الأذكار الإسلامية - أذكار الصباح والمساء والنوم</title>
+    <link rel="stylesheet" href="CSS/azkar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../imges/quran.ico">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-hands-praying"></i> أذكار</h1>
+        <nav class="nav-links">
+            <a href="../prayer-times.html" title="أوقات الصلاة"><i class="fas fa-clock"></i> الصلاة</a>
+            <a href="../ramadan.html" title="رمضان"><i class="fas fa-moon"></i> رمضان</a>
+            <a href="../eid.html" title="العيد"><i class="fas fa-person-dress"></i> العيد</a>
+            <a href="../index.html" title="الصفحة الرئيسية"><i class="fas fa-home"></i> الرئيسية</a>
+        </nav>
+        <button class="menu-toggle" aria-label="فتح القائمة">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <main>
+        <a href="اذكار_الصباح/azkar-1.html" class="card card-morning card-link">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <h3>اذكار الصباح</h3>
+                <p class="card-desc">أذكار تقال عند الاستيقاظ</p>
+            </div>
+        </a>
+
+        <a href="اذكار_المساء/azkar-2.html" class="card card-evening card-link">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <h3>اذكار المساء</h3>
+                <p class="card-desc">أذكار تقال في آخر اليوم</p>
+            </div>
+        </a>
+
+        <a href="اذكار_النوم/azkar-3.html" class="card card-sleep card-link">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-bed"></i>
+                </div>
+                <h3>اذكار النوم</h3>
+                <p class="card-desc">أذكار قبل النوم والاستغفار</p>
+            </div>
+        </a>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                menuToggle.classList.toggle('active');
+                navLinks.classList.toggle('show');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('show');
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('header')) {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
