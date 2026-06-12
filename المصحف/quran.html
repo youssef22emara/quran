@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1a0f35">
+
+<link rel="stylesheet" href="quran-style.css">
+
+<title>المصحف الإلكتروني</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1><i class="fas fa-book-quran" ></i> المصحف</h1>
+
+    <nav class="nav-links">
+            <a href="../zekr/azkar.html"><i class="fas fa-hands-praying"></i> أذكار</a>
+            <a href="../ramadan.html"><i class="fas fa-moon"></i> رمضان</a>
+            <a href="../eid.html"><i class="fas fa-person-dress"></i> العيد</a>
+            <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+        </nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+</header>
+
+<!-- ===== مشغل الصوت الثابت ===== -->
+<div class="audio-player" id="audioPlayer">
+    <button class="reciter-selector-btn" id="reciterSelectorBtn" aria-label="اختر القارئ">
+        <div class="reciter-selector-wrapper">
+            <img id="reciterImage" src="imges/menshawy.jpg" alt="صورة القارئ">
+            <i class="fas fa-chevron-down selector-arrow"></i>
+        </div>
+        <span class="reciter-label">اختر قارئ</span>
+    </button>
+    <div class="player-info">
+        <span id="reciterName" style="display: none;"></span>
+        <span id="currentSurahName">لا توجد سورة</span>
+    </div>
+
+    <div class="player-controls">
+        <button onclick="rewindAudio()" title="ترجيع 5 ثواني"><i class="fas fa-forward"></i></button>
+        <button onclick="togglePlay()"><i class="fas fa-play" id="playIcon"></i></button>
+        <button onclick="forwardAudio()" title="تقديم 5 ثواني"><i class="fas fa-backward"></i></button>
+    </div>
+
+    <audio id="quranAudio"></audio>
+</div>
+
+<!-- ===== قائمة القراء المنسدلة ===== -->
+<div class="scholars-dropdown" id="scholarsDropdown" style="display: none;">
+    <div class="scholars-bar" id="recitersBar">
+
+
+    <a href="#" class="scholar-profile" data-reciter="محمد صديق المنشاوي" data-server="https://server10.mp3quran.net/minsh/">
+    <img src="../imges/menshawy.jpg" class="scholar-image">
+    <span class="scholar-name">محمد صديق المنشاوي</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="المنشاوي مجود" data-server="https://server10.mp3quran.net//minsh/Almusshaf-Al-Mojawwad/"
+>
+    <img src="../imges/mohamed-minshawy.jpg" class="scholar-image">
+    <span class="scholar-name">المنشاوي (مجود)</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="ياسر الدوسري" data-server="https://server11.mp3quran.net/yasser/">
+    <img src="../imges/ياسر_الدوسري.jpg" class="scholar-image">
+    <span class="scholar-name">ياسر الدوسري</span>
+    </a>
+    <a href="#" class="scholar-profile" data-reciter="الحصري" data-server="https://server13.mp3quran.net/husr/">
+    <img src="../imges/الحصري.jpg" class="scholar-image">
+    <span class="scholar-name">محمود الحصري</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="احمد النفيس" data-server="https://server16.mp3quran.net/nufais/Rewayat-Hafs-A-n-Assem/">
+    <img src="../imges/احمد_النفيس.jpg" class="scholar-image">
+    <span class="scholar-name">احمد النفيس</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="عبدالباسط عبدالصمد" data-server="https://server7.mp3quran.net/basit/">
+    <img src="../imges/عبدالباسط_عبدالصمد.jpg" class="scholar-image">
+    <span class="scholar-name">عبدالباسط عبدالصمد</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="ماهر المعيقلي" data-server="https://server12.mp3quran.net/maher/">
+    <img src="../imges/Maher.jpeg" class="scholar-image">
+    <span class="scholar-name">ماهر المعيقلي</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="مشاري العفاسي" data-server="https://server8.mp3quran.net/afs/">
+    <img src="../imges/Mashare.jpeg" class="scholar-image">
+    <span class="scholar-name">مشاري راشد العفاسي</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="ناصر القطامي" data-server="https://server6.mp3quran.net/qtm/">
+    <img src="../imges/nasser.jpg" class="scholar-image">
+    <span class="scholar-name">ناصر القطامي</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="أحمد العجم" data-server="https://server10.mp3quran.net/ajm/">
+    <img src="../imges/ajam.jpg" class="scholar-image">
+    <span class="scholar-name">أحمد العجم</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="سعد الغامدي" data-server="https://server7.mp3quran.net/s_gmd/">
+    <img src="../imges/ghamdi.jpg" class="scholar-image">
+    <span class="scholar-name">سعد الغامدي</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="فارس عباد" data-server="https://server8.mp3quran.net/frs_a/">
+    <img src="../imges/abbad.jpeg" class="scholar-image">
+    <span class="scholar-name">فارس عباد</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="خالد الجليل" data-server="https://server10.mp3quran.net/jleel/">
+    <img src="../imges/jaleel.jpg" class="scholar-image">
+    <span class="scholar-name">خالد الجليل</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="حسن صالح" data-server="https://server16.mp3quran.net/h_saleh/Rewayat-Hafs-A-n-Assem/">
+    <img src="../imges/saleh.jpeg" class="scholar-image">
+    <span class="scholar-name">حسن صالح</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="بندر بليلة" data-server="https://server6.mp3quran.net/balilah/">
+    <img src="../imges/baleela.jpeg" class="scholar-image">
+    <span class="scholar-name">بندر بليلة</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="سعود الشريم" data-server="https://server7.mp3quran.net/shur/">
+    <img src="../imges/shuraim.jpeg" class="scholar-image">
+    <span class="scholar-name">سعود الشريم</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="عبدالرحمن السديس" data-server="https://server11.mp3quran.net/sds/">
+    <img src="../imges/sudais.jpg" class="scholar-image">
+    <span class="scholar-name">عبدالرحمن السديس</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="عبدالرحمن العوسي" data-server="https://server6.mp3quran.net/aloosi/">
+    <img src="../imges/awasi.jpeg" class="scholar-image">
+    <span class="scholar-name">عبدالرحمن العوسي</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="محمد أيوب" data-server="https://server8.mp3quran.net/ayyub/">
+    <img src="../imges/ayyub.jpg" class="scholar-image">
+    <span class="scholar-name">محمد أيوب</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="محمد جبريل" data-server="https://server8.mp3quran.net/jbrl/">
+    <img src="../imges/jibreel.jpg" class="scholar-image">
+    <span class="scholar-name">محمد جبريل</span>
+    </a>
+
+    <a href="#" class="scholar-profile" data-reciter="فيصل الهاجري" data-server="https://server16.mp3quran.net/download/f_hajry/Rewayat-Hafs-A-n-Assem/">
+    <img src="../imges/faisal.jpeg" class="scholar-image">
+    <span class="scholar-name">فيصل الهاجري</span>
+    </a>
+
+    </div>
+</div>
+
+
+<section class="search-section" id="searchSection">
+    <h2>ابحث عن السورة</h2>
+
+    <div class="search-container">
+        <div class="search-input-wrapper">
+            <input type="text" id="searchInput" placeholder="اكتب اسم السورة...">
+            <button class="dropdown-toggle" id="dropdownToggle" aria-label="عرض جميع السور">
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+        <div id="suggestionsBox" class="suggestions-style"></div>
+        <button onclick="searchSurah()">بحث</button>
+    </div>
+</section>
+
+<div id="quranContent" class="reading-area">
+    <p>نص السورة سيظهر هنا بمجرد البحث...</p>
+</div>
+
+<script src="quran-js.js"></script>
+
+</body>
+</html>

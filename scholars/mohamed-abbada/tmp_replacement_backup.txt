@@ -1,0 +1,10 @@
+Backup of original HTML block before changes:
+
+<div class="audio-player">
+    <img src="../../imges/محمد-عبادة.jpg" alt="الشيخ محمد عبادة" class="player-image">
+    <h3 id="current-surah">اختر سورة للاستماع</h3>
+    <audio id="quran-audio" controls>
+        <source src="" type="audio/mpeg">
+        متصفحك لا يدعم تشغيل الصوت.
+    </audio>
+</div>

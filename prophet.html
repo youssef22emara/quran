@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10b981">
+  <title>قصص الأنبياء | نور الحياة</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="prophet.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <div class="header-logo">
+    <div class="logo-icon">🕌</div>
+    <div class="logo-name">
+      نور الحياة
+      <span>Noor Al-Hayat</span>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="icon-btn" id="themeBtn" title="تبديل الوضع" aria-label="تبديل الوضع">🌙</button>
+  </div>
+</header>
+
+<main class="main">
+  <div class="section">
+    <div class="section-head">
+      <div class="section-title">ابحث عن نبي</div>
+      <a href="index.html" class="see-all">الرئيسية</a>
+    </div>
+
+    <div class="search-panel">
+      <input id="prophetSearch" class="search-input" type="text" placeholder="اكتب اسم النبي... مثل آدم، نوح، إبراهيم، يوسف">
+      <div id="suggestionsList" class="suggestions-list"></div>
+    </div>
+  </div>
+
+  <div id="prophetStory" class="prophet-story">
+    <div class="story-empty">
+      <h2>اختر نبيًا من البحث لتعرض قصته هنا</h2>
+      <p>يمكنك البحث عن أي نبي من خلال الحقل أعلاه، وسيتم عرض القصة تلقائيًا.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div class="section-title">قصص أخرى قد تعجبك</div>
+    </div>
+    <div id="relatedStories" class="related-grid"></div>
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-logo">
+    <div class="logo-icon" style="width:36px;height:36px;font-size:18px;">🕌</div>
+    <span style="font-size:15px;font-weight:700;color:var(--text);">نور الحياة</span>
+  </div>
+  <div class="footer-links">
+    <a href="المصحف/quran.html" class="footer-link">المصحف</a>
+    <a href="zekr/azkar.html" class="footer-link">الأذكار</a>
+    <a href="prayer-times.html" class="footer-link">الصلاة</a>
+    <a href="ramadan.html" class="footer-link">رمضان</a>
+    <a href="eid.html" class="footer-link">العيد</a>
+  </div>
+  <div class="footer-social">
+    <a href="https://www.tiktok.com/@ar_muslim_eg/" class="social-btn" target="_blank" rel="noopener">📱</a>
+    <a href="https://www.facebook.com/profile.php?id=61578183610662" class="social-btn" target="_blank" rel="noopener">👥</a>
+  </div>
+  <div class="footer-copy">© 2026 نور الحياة — جميع الحقوق محفوظة</div>
+</footer>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="nav-item">
+    <span class="nav-icon">🏠</span>
+    <span>الرئيسية</span>
+  </a>
+  <a href="المصحف/quran.html" class="nav-item">
+    <span class="nav-icon">📖</span>
+    <span>المصحف</span>
+  </a>
+  <a href="zekr/azkar.html" class="nav-item">
+    <span class="nav-icon">📿</span>
+    <span>الأذكار</span>
+  </a>
+  <a href="prayer-times.html" class="nav-item">
+    <span class="nav-icon">🕐</span>
+    <span>الصلاة</span>
+  </a>
+  <a href="ramadan.html" class="nav-item">
+    <span class="nav-icon">🌙</span>
+    <span>رمضان</span>
+  </a>
+  <a href="eid.html" class="nav-item">
+    <span class="nav-icon">🎊</span>
+    <span>العيد</span>
+  </a>
+</nav>
+
+<script src="prophet.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#0d0d1a;font-family:'Segoe UI',Tahoma,sans-serif}
+.card{background:linear-gradient(145deg,#1a1a2e,#16213e);border:1px solid #2a2a4a;border-radius:24px;padding:32px 28px 28px;width:340px;display:flex;flex-direction:column;align-items:center;gap:20px;direction:rtl}
+.avatar-wrap{position:relative;width:100px;height:100px}
+.avatar-wrap img{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid transparent;transition:transform 0.3s linear}
+.avatar-wrap::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(#f5a623,#ffd700,#f5a623,#c8860a,#f5a623);z-index:-1;animation:none}
+.avatar-wrap.spinning img{animation:spin 4s linear infinite}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.title{color:#e8d5a3;font-size:16px;font-weight:600;letter-spacing:0.02em}
+.controls{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center;gap:20px;width:100%}
+.btn{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:none;cursor:pointer;transition:all 0.2s ease}
+.btn-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#2a2a4a;border:1.5px solid #3a3a6a;transition:all 0.2s ease;font-size:18px}
+.btn:active .btn-icon{transform:scale(0.92)}
+.btn-label{color:#8888aa;font-size:11px;font-weight:500}
+.btn-play .btn-icon{width:62px;height:62px;background:#2a3a2a;border-color:#3a5a3a;font-size:22px}
+.btn-play.active .btn-icon{background:#1a4a2a;border-color:#2aaa5a;box-shadow:0 0 16px #2aaa5a44}
+.btn-play.active .btn-label{color:#2aaa5a}
+.btn-repeat .btn-icon{color:#f5a623}
+.btn-repeat.active .btn-icon{background:#0a2a3a;border-color:#00c8e8;box-shadow:0 0 14px #00c8e844;color:#00c8e8}
+.btn-repeat.active .btn-label{color:#00c8e8}
+.btn-download .btn-icon{color:#f5a623}
+.btn-download:active .btn-icon{background:#3a2a1a;border-color:#f5a623}
+.seek-wrap{width:100%;display:flex;flex-direction:row-reverse;align-items:center;gap:10px}
+.time{color:#7777aa;font-size:11px;font-family:'Courier New',monospace;min-width:36px;text-align:center}
+.seek{flex:1;-webkit-appearance:none;appearance:none;height:5px;border-radius:4px;outline:none;cursor:pointer;background:#2a2a4a}
+.seek::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#f5a623;box-shadow:0 0 6px #f5a62366;cursor:pointer;transition:transform 0.15s}
+.seek::-webkit-slider-thumb:hover{transform:scale(1.2)}
+svg{display:inline-block;vertical-align:middle}
+</style>
+
+<div style="display:flex;align-items:center;justify-content:center;padding:2rem 0">
+<div class="card">
+  <div class="avatar-wrap" id="avatarWrap">
+    <img src="https://i.pravatar.cc/100?img=57" alt="الشيخ" id="avatar">
+  </div>
+
+  <div class="title">اختر سورة للاستماع</div>
+
+  <div class="controls">
+    <button class="btn btn-repeat" id="btnRepeat" onclick="toggleRepeat()" aria-label="تكرار">
+      <div class="btn-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+        </svg>
+      </div>
+      <span class="btn-label">تكرار</span>
+    </button>
+
+    <button class="btn btn-play" id="btnPlay" onclick="togglePlay()" aria-label="تشغيل">
+      <div class="btn-icon" id="playIcon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+          <polygon points="5,3 19,12 5,21"/>
+        </svg>
+      </div>
+      <span class="btn-label" id="playLabel">تشغيل</span>
+    </button>
+
+    <button class="btn btn-download" onclick="doDownload()" aria-label="تحميل">
+      <div class="btn-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      </div>
+      <span class="btn-label">تحميل</span>
+    </button>
+  </div>
+
+  <div class="seek-wrap">
+    <span class="time" id="timeTotal">03:30</span>
+    <input type="range" class="seek" id="seekBar" min="0" max="210" value="0" step="1" oninput="onSeek(this.value)">
+    <span class="time" id="timeCurrent">00:00</span>
+  </div>
+</div>
+</div>
+
+<script>
+let playing = false, repeating = false;
+let current = 0, total = 210, raf = null, last = null;
+
+function fmt(s){s=Math.round(s);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+
+function updateSeekGradient(){
+  const pct = (current/total)*100;
+  document.getElementById('seekBar').style.background=
+    `linear-gradient(to left, #f5a623 ${pct}%, #2a2a4a ${pct}%)`;
+}
+
+function togglePlay(){
+  playing = !playing;
+  const btn = document.getElementById('btnPlay');
+  const icon = document.getElementById('playIcon');
+  const label = document.getElementById('playLabel');
+  const av = document.getElementById('avatarWrap');
+  btn.classList.toggle('active', playing);
+  av.classList.toggle('spinning', playing);
+  icon.innerHTML = playing
+    ? `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`
+    : `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>`;
+  label.textContent = playing ? 'إيقاف' : 'تشغيل';
+  if(playing){last=null;raf=requestAnimationFrame(tick);}
+  else{cancelAnimationFrame(raf);}
+}
+
+function tick(ts){
+  if(!last)last=ts;
+  const dt=(ts-last)/1000;last=ts;
+  current=Math.min(current+dt,total);
+  document.getElementById('seekBar').value=current;
+  document.getElementById('timeCurrent').textContent=fmt(current);
+  updateSeekGradient();
+  if(current>=total){
+    if(repeating){current=0;}
+    else{playing=false;document.getElementById('btnPlay').classList.remove('active');document.getElementById('avatarWrap').classList.remove('spinning');document.getElementById('playIcon').innerHTML='<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>';document.getElementById('playLabel').textContent='تشغيل';return;}
+  }
+  raf=requestAnimationFrame(tick);
+}
+
+function toggleRepeat(){
+  repeating=!repeating;
+  document.getElementById('btnRepeat').classList.toggle('active',repeating);
+}
+
+function onSeek(v){
+  current=parseFloat(v);
+  document.getElementById('timeCurrent').textContent=fmt(current);
+  updateSeekGradient();
+  if(playing){cancelAnimationFrame(raf);last=null;raf=requestAnimationFrame(tick);}
+}
+
+function doDownload(){
+  const a=document.createElement('a');
+  a.href='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=';
+  a.download='quran_sample.wav';a.click();
+}
+
+updateSeekGradient();
+</script>

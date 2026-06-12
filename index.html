@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10b981">
+<title>نور الحياة | Noor Al-Hayat</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <div class="header-logo">
+    <div class="logo-icon">🕌</div>
+    <div class="logo-name">
+      نور الحياة
+      <span>Noor Al-Hayat</span>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="icon-btn" id="searchBtn" title="بحث" aria-label="بحث">🔍</button>
+    <button class="icon-btn" id="themeBtn" title="تبديل الوضع" aria-label="تبديل الوضع">🌙</button>
+  </div>
+</header>
+
+<!-- ============ SEARCH ============ -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <input class="search-input" id="searchInput" type="text" placeholder="ابحث في الموقع...">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ============ MAIN ============ -->
+<main class="main">
+
+  <!-- § 1 — PRAYER HERO -->
+  <div class="prayer-hero" id="prayerHero">
+    <div class="prayer-hero-pattern"></div>
+    <div class="prayer-label">الصلاة القادمة</div>
+    <div class="prayer-name" id="nextPrayerName">جاري التحميل...</div>
+    <div class="prayer-actual-time" id="nextPrayerTime">--:--</div>
+    <div class="prayer-countdown" id="countdown">
+      <div class="countdown-item">
+        <div class="countdown-value" id="cH">00</div>
+        <div class="countdown-label">ساعة</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-item">
+        <div class="countdown-value" id="cM">00</div>
+        <div class="countdown-label">دقيقة</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-item">
+        <div class="countdown-value" id="cS">00</div>
+        <div class="countdown-label">ثانية</div>
+      </div>
+    </div>
+    <div class="prayer-mosq-icon">🕌</div>
+  </div>
+
+  <!-- PRAYERS ROW -->
+  <div class="prayers-row" id="prayersRow">
+    <div class="prayer-mini" id="pm-fajr">
+      <div class="prayer-mini-name">الفجر</div>
+      <div class="prayer-mini-time">--:--</div>
+    </div>
+    <div class="prayer-mini" id="pm-dhuhr">
+      <div class="prayer-mini-name">الظهر</div>
+      <div class="prayer-mini-time">--:--</div>
+    </div>
+    <div class="prayer-mini" id="pm-asr">
+      <div class="prayer-mini-name">العصر</div>
+      <div class="prayer-mini-time">--:--</div>
+    </div>
+    <div class="prayer-mini" id="pm-maghrib">
+      <div class="prayer-mini-name">المغرب</div>
+      <div class="prayer-mini-time">--:--</div>
+    </div>
+    <div class="prayer-mini" id="pm-isha">
+      <div class="prayer-mini-name">العشاء</div>
+      <div class="prayer-mini-time">--:--</div>
+    </div>
+    <div class="prayer-mini" id="pm-sunrise">
+      <div class="prayer-mini-name">الشروق</div>
+      <div class="prayer-mini-time">--:--</div>
+    </div>
+  </div>
+
+  <!-- § 2 — AZKAR & ADIYA -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-title">الأذكار والأدعية</div>
+    </div>
+    <div class="double-cards">
+      <a href="zekr/azkar.html" class="feature-card">
+        <div class="feature-card-icon">📿</div>
+        <div class="feature-card-title">الأذكار</div>
+        <div class="feature-card-desc">أذكار الصباح والمساء والنوم</div>
+        <div class="feature-card-arrow">←</div>
+      </a>
+      <div class="feature-card" onclick="scrollToDua()">
+        <div class="feature-card-icon">🤲</div>
+        <div class="feature-card-title">الأدعية</div>
+        <div class="feature-card-desc">أدعية نبوية مأثورة</div>
+        <div class="feature-card-arrow">←</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- § 3 — DUA -->
+  <div class="section" id="duaSection">
+    <div class="section-head">
+      <div class="section-title">دعاء اليوم</div>
+    </div>
+    <div class="dua-card">
+      <div class="dua-card-badge">✨ يتجدد تلقائياً كل ٣٠ دقيقة</div>
+      <div class="dua-text" id="duaText">بسم الله الرحمن الرحيم</div>
+      <div class="dua-source" id="duaSource">جاري التحميل...</div>
+      <div class="dua-dots" id="duaDots"></div>
+    </div>
+  </div>
+
+  <!-- § 4 — QUICK SERVICES -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-title">خدمات سريعة</div>
+    </div>
+    <div class="services-grid">
+      <a href="المصحف/quran.html" class="service-card">
+        <div class="service-icon">📖</div>
+        <div class="service-name">المصحف</div>
+      </a>
+      <a href="zekr/azkar.html" class="service-card">
+        <div class="service-icon">📿</div>
+        <div class="service-name">الأذكار</div>
+      </a>
+      <a href="prayer-times.html" class="service-card">
+        <div class="service-icon">🕐</div>
+        <div class="service-name">مواقيت</div>
+      </a>
+      <div class="service-card" onclick="showQibla()">
+        <div class="service-icon">🧭</div>
+        <div class="service-name">القبلة</div>
+      </div>
+      <a href="ramadan.html" class="service-card">
+        <div class="service-icon">🌙</div>
+        <div class="service-name">رمضان</div>
+      </a>
+      <a href="eid.html" class="service-card">
+        <div class="service-icon">🎊</div>
+        <div class="service-name">العيد</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- § 5 — PROPHETS -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-title">قصص الأنبياء</div>
+      <a href="prophet.html" class="see-all">الكل</a>
+    </div>
+    <div class="scroll-bar-wrap">
+      <button type="button" class="scholar-nav scroll-nav" data-target="prophetsScroll" data-step="220" aria-label="السابق">▶</button>
+      <div class="prophets-scroll" id="prophetsScroll"></div>
+      <button type="button" class="scholar-nav scroll-nav" data-target="prophetsScroll" data-step="-220" aria-label="التالي">◀</button>
+    </div>
+  </div>
+
+  <!-- § 6 — QURAN READERS -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-title">قراء القرآن الكريم</div>
+      <a href="" class="see-all">الكل</a>
+    </div>
+    <div class="scholars-bar-wrap">
+      <button type="button" class="scholar-nav scholar-nav-right" aria-label="سابق">▶</button>
+      <div class="scholars-bar" id="scholarsBar">
+        <a href="scholars/menshawy/menshawy.html" class="scholar-profile">
+            <img src="imges/menshawy.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> محمد صديق المنشاوي</span>
+        </a>
+        <a href="scholars/المنشاوي_مجود/menshawy.html" class="scholar-profile">
+            <img src="imges/mohamed-minshawy.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name">المنشاوي ( مجود )</span>
+        </a>
+        <a href="scholars/yaser/yaser.html" class="scholar-profile">
+            <img src="imges/yaser.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> ياسر الدوسري</span>
+        </a>
+        <a href="scholars/محمود_حصري/الحصري.html" class="scholar-profile">
+            <img src="imges/الحصري.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name">محمود حصري</span>
+        </a>
+        <a href="scholars/nafis/nafis.html" class="scholar-profile">
+            <img src="imges/احمد_النفيس.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name">احمد النفيس</span>
+        </a>
+        <a href="scholars/abd-albasit/abd-albasit.html" class="scholar-profile">
+            <img src="imges/عبدالباسط_عبدالصمد.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> عبدالباسط عبدالصمد</span>
+        </a>
+        <a href="scholars/maher/maher.html" class="scholar-profile">
+            <img src="imges/Maher.jpeg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> ماهر المعيقلي</span>
+        </a>
+        <a href="scholars/mashare/mashare.html" class="scholar-profile">
+            <img src="imges/Mashare.jpeg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> مشاري راشد العفاسي</span>
+        </a>
+        <a href="scholars/nasser/nasser.html" class="scholar-profile">
+            <img src="imges/nasser.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> ناصر القطامي</span>
+        </a>
+        <a href="scholars/ajam/ajam.html" class="scholar-profile">
+            <img src="imges/ajam.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> أحمد العجم</span>
+        </a>
+        <a href="scholars/ghamdi/ghamdi.html" class="scholar-profile">
+            <img src="imges/ghamdi.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> سعد الغامدي</span>
+        </a>
+        <a href="scholars/abbad/abbad.html" class="scholar-profile">
+            <img src="imges/abbad.jpeg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> فارس عباد</span>
+        </a>
+        <a href="scholars/mohamed-abbada/mohamed-abbada.html" class="scholar-profile">
+            <img src="imges/محمد-عبادة.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> محمد عبادة</span>
+        </a>
+        <a href="scholars/jaleel/jaleel.html" class="scholar-profile">
+            <img src="imges/jaleel.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> خالد الجليل</span>
+        </a>
+        <a href="scholars/saleh/saleh.html" class="scholar-profile">
+            <img src="imges/saleh.jpeg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> حسن صالح</span>
+        </a>
+        <a href="scholars/baleela/baleela.html" class="scholar-profile">
+            <img src="imges/baleela.jpeg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> بندر بليلة</span>
+        </a>
+        <a href="scholars/shuraim/shuraim.html" class="scholar-profile">
+            <img src="imges/shuraim.jpeg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> سعود الشريم</span>
+        </a>
+        <a href="scholars/sudais/sudais.html" class="scholar-profile">
+            <img src="imges/sudais.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> عبدالرحمن السديس</span>
+        </a>
+        <a href="scholars/awasi/awasi.html" class="scholar-profile">
+            <img src="imges/awasi.jpeg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> عبدالرحمن العوسي</span>
+        </a>
+        <a href="scholars/ayyub/ayyub.html" class="scholar-profile">
+            <img src="imges/ayyub.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> محمد أيوب</span>
+        </a>
+        <a href="scholars/jibreel/jibreel.html" class="scholar-profile">
+            <img src="imges/jibreel.jpg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> محمد جبريل</span>
+        </a>
+        <a href="scholars/faisal/faisal.html" class="scholar-profile">
+            <img src="imges/faisal.jpeg" alt="الشيخ" class="scholar-image">
+            <span class="scholar-name"> فيصل الهاجري</span>
+        </a>
+      </div>
+      <button type="button" class="scholar-nav scholar-nav-left" aria-label="التالي">◀</button>
+    </div>
+  </div>
+
+  <!-- § 7 — PROPHET VIDEOS -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-title">قصص الأنبياء (فيديو)</div>
+    </div>
+    <div class="scroll-bar-wrap">
+      <button type="button" class="scholar-nav scroll-nav" data-target="videosScroll" data-step="220" aria-label="السابق">▶</button>
+      <div class="videos-scroll" id="videosScroll"></div>
+      <button type="button" class="scholar-nav scroll-nav" data-target="videosScroll" data-step="-220" aria-label="التالي">◀</button>
+    </div>
+  </div>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-logo">
+    <div class="logo-icon" style="width:36px;height:36px;font-size:18px;">🕌</div>
+    <span style="font-size:15px;font-weight:700;color:var(--text);">نور الحياة</span>
+  </div>
+  <div class="footer-links">
+    <a href="المصحف/quran.html" class="footer-link">المصحف</a>
+    <a href="zekr/azkar.html" class="footer-link">الأذكار</a>
+    <a href="prayer-times.html" class="footer-link">الصلاة</a>
+    <a href="ramadan.html" class="footer-link">رمضان</a>
+    <a href="eid.html" class="footer-link">العيد</a>
+  </div>
+  <div class="footer-social">
+    <a href="https://www.tiktok.com/@ar_muslim_eg/" class="social-btn" target="_blank" rel="noopener">📱</a>
+    <a href="https://www.facebook.com/profile.php?id=61578183610662" class="social-btn" target="_blank" rel="noopener">👥</a>
+  </div>
+  <div class="footer-copy">© 2026 نور الحياة — جميع الحقوق محفوظة</div>
+</footer>
+
+<!-- ============ BOTTOM NAV ============ -->
+<nav class="bottom-nav">
+  <a href="index.html" class="nav-item active">
+    <span class="nav-icon">🏠</span>
+    <span>الرئيسية</span>
+  </a>
+  <a href="المصحف/quran.html" class="nav-item">
+    <span class="nav-icon">📖</span>
+    <span>المصحف</span>
+  </a>
+  <a href="zekr/azkar.html" class="nav-item">
+    <span class="nav-icon">📿</span>
+    <span>الأذكار</span>
+  </a>
+  <a href="prayer-times.html" class="nav-item">
+    <span class="nav-icon">🕐</span>
+    <span>الصلاة</span>
+  </a>
+  <a href="ramadan.html" class="nav-item">
+    <span class="nav-icon">🌙</span>
+    <span>رمضان</span>
+  </a>
+  <a href="eid.html" class="nav-item">
+    <span class="nav-icon">🎊</span>
+    <span>العيد</span>
+  </a>
+</nav>
+
+<!-- ============ VIDEO MODAL ============ -->
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="videoClose">✕</button>
+    <iframe class="video-iframe" id="videoIframe" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

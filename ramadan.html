@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شهر رمضان - موقع إسلامي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/ramadan.css">
+    <link rel="icon" href="imges/quran.ico">
+</head>
+<body>
+    <header class="header">
+        <a class="icon-head" href="index.html"><i class="fas fa-mosque"></i> رمضان كريم</a>
+        <nav class="nav-links">
+            <a href="zekr/azkar.html"><i class="fas fa-hands-praying"></i> أذكار</a>
+            <a href="prayer-times.html"><i class="fas fa-clock"></i> الصلاة</a>
+            <a href="eid.html"><i class="fas fa-star"></i> العيد</a>
+            <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+        </nav>
+        <button class="menu-toggle" aria-label="فتح القائمة">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <main class="main-content">
+        <div class="ramadan-container">
+            <div class="ramadan-header">
+                <h1><i class="fas fa-moon-stars"></i> شهر رمضان المبارك <i class="fas fa-star-and-crescent"></i></h1>
+                <p>شهر الصيام والقيام والإكثار من العبادات</p>
+            </div>
+
+            <div class="countdown-container">
+                <h2><i class="fas fa-hourglass-end"></i> العد التنازلي لرمضان</h2>
+                <div class="countdown-grid">
+                    <div class="countdown-item">
+                        <div id="days" class="countdown-number">00</div>
+                        <div class="countdown-label">أيام</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="hours" class="countdown-number">00</div>
+                        <div class="countdown-label">ساعات</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="minutes" class="countdown-number">00</div>
+                        <div class="countdown-label">دقائق</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="seconds" class="countdown-number">00</div>
+                        <div class="countdown-label">ثواني</div>
+                    </div>
+                </div>
+                <div class="ramadan-date-info">
+                    <div class="hijri-date">
+                        <span id="hijri-date">--</span>
+                    </div>
+                    <div class="gregorian-date">
+                        <span id="gregorian-date">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ramadan-grid">
+                <div class="ramadan-card">
+                    <h3><i class="fas fa-quran"></i> فضل شهر رمضان</h3>
+                    <p>شهر رمضان هو شهر القرآن، وفيه ليلة القدر التي هي خير من ألف شهر. قال تعالى: "شهر رمضان الذي أنزل فيه القرآن هدى للناس وبينات من الهدى والفرقان".</p>
+                </div>
+                <div class="ramadan-card">
+                    <h3><i class="fas fa-heart"></i> أعمال مستحبة</h3>
+                    <p>قيام الليل، قراءة القرآن، الإكثار من الدعاء، الصدقة، إفطار الصائمين، الاعتكاف في العشر الأواخر.</p>
+                </div>
+                <div class="ramadan-card">
+                    <h3><i class="fas fa-coins"></i> زكاة الفطر</h3>
+                    <p>تجب زكاة الفطر على كل مسلم قادر، وتخرج قبل صلاة العيد، وهي طهرة للصائم من اللغو والرفث.</p>
+                </div>
+            </div>
+
+            <div class="ramadan-section">
+                <h2><i class="fas fa-book"></i> أحكام الصيام</h2>
+                <p>✓ يجب الصيام على كل مسلم بالغ عاقل قادر مقيم صحيح، ويحرم على الحائض والنفساء، ويجب قضاء ما فاته من أيام.</p>
+                <p>✓ مبطلات الصيام: الأكل والشرب عمداً، الجماع، القيء عمداً، خروج دم الحيض أو النفاس.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/ramadan.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

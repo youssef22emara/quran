@@ -1,0 +1,659 @@
+/* ===== خط المصحف المكي ===== */
+@font-face {
+    font-family: 'MushafMakki';
+    src: url('fonts/UthmanicHafs.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(135deg,#1a0f35,#2c1b55);
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* ===== Header ===== */
+
+header {
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 899;
+}
+
+header h1 {
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #facc15;
+}
+
+/* Mobile Menu */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+}
+
+/* ===== Search Section ===== */
+
+.search-section {
+    text-align: center;
+    padding: 60px 20px 30px;
+}
+
+.search-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 14px 45px 14px 15px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 193, 7, 0.3);
+    transition: all 0.3s ease;
+}
+
+.search-container input:focus {
+    border-color: rgba(255, 193, 7, 0.8);
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.dropdown-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255, 193, 7, 0.7);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.dropdown-toggle:hover {
+    color: #facc15;
+    background: rgba(255, 193, 7, 0.1);
+}
+
+.dropdown-toggle.active {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.search-container button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    background: #facc15;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-container button:hover {
+    background: #ffd84d;
+}
+
+.suggestions-style {
+    position: absolute;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    border-radius: 8px;
+    margin-top: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+    z-index: 999;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.suggestion-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    font-size: 15px;
+}
+
+.suggestion-item:hover {
+    background: rgba(250, 204, 21, 0.1);
+    color: #000;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+/* ===== Quran Content ===== */
+
+.reading-area {
+    max-width: 950px;
+    margin: 50px auto;
+    padding: 50px;
+    background: #ffffff;
+    color: #000;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+
+    font-family: 'MushafMakki', serif; /* خط المصحف */
+    font-size: 30px; /* حجم مناسب لخط المصحف */
+    line-height: 3.2; /* مسافة مريحة بين الآيات */
+    text-align: center;
+
+    letter-spacing: 0.5px;
+}
+.ayah {
+    display: inline-block;
+    margin: 8px 0;
+}
+/* ===== تنسيق عرض السورة ===== */
+
+.surah-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.surah-header h2 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.surah-header p {
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+.surah-body {
+    font-family: 'MushafMakki', serif;
+    font-size: 30px;
+    line-height: 3.2;
+}
+
+.ayah {
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.ayah-number {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 18px;
+    background: #facc15;
+    color: black;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 28px;
+}
+/* تأثير إخفاء البحث عند النزول */
+.search-section {
+    transition: all 0.4s ease;
+}
+
+.search-section.hide {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+/* ===== مشغل الصوت ===== */
+
+.audio-player{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#120a28;
+    display:flex;
+    align-items:center;
+    gap:15px;   
+    padding:10px 20px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.reciter-selector-btn {
+    background: none;
+    border: 2px solid rgba(255, 193, 7, 0.3);
+    border-radius: 25px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    min-width: 120px;
+}
+
+.reciter-selector-btn:hover {
+    border-color: rgba(255, 193, 7, 0.6);
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.2);
+    background: rgba(255, 193, 7, 0.05);
+}
+
+.reciter-selector-wrapper {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.reciter-selector-btn img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.selector-arrow {
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    width: 18px;
+    height: 18px;
+    background: rgba(255, 193, 7, 0.9);
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    padding: 1px;
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+    line-height: 1;
+}
+
+.reciter-label {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.scholars-dropdown.active .selector-arrow {
+    transform: rotate(180deg);
+}
+
+.player-info{
+    display:flex;
+    flex-direction:column;
+    font-size:14px;
+    flex: 1;
+    justify-content: center;
+}
+
+.player-controls{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.player-controls button{
+    background:#facc15;
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    color: #000;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+}
+
+.player-controls button:hover{
+    background: #ffd84d;
+    transform: scale(1.05);
+}
+
+.player-controls button:active{
+    transform: scale(0.95);
+}
+/* ===== SCHOLARS BAR - Dropdown Style ===== */
+.scholars-dropdown {
+    position: sticky;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+    background: rgba(18, 10, 40, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+    padding: 15px 20px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scholars-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+.scholars-bar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scholars-bar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.scholars-bar::-webkit-scrollbar-thumb {
+    background: rgba(255, 193, 7, 0.4);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.scholars-bar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 193, 7, 0.7);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scholar-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+    padding: 0.8rem 1rem;
+    background: rgba(63, 81, 181, 0.1);
+    border: 1px solid rgba(63, 81, 181, 0.2);
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    flex-shrink: 0;
+    width: 98%;
+}
+
+.scholar-profile:hover {
+    border-color: rgba(255, 193, 7, 0.5);
+    transform: translateX(-5px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.15);
+    background: rgba(63, 81, 181, 0.2);
+}
+
+.scholar-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 193, 7, 0.3);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.scholar-profile:hover .scholar-image {
+    border-color: rgba(255, 193, 7, 0.6);
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+}
+
+.scholar-name {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.scholar-name {
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+    transition: color 0.3s ease;
+    line-height: 1.4;
+}
+
+.scholar-profile:hover .scholar-name {
+    color: #FFD700;
+}
+
+/* ===== FEATURED SCHOLAR - MINSHAWY ===== */
+.scholar-profile.featured-scholar {
+    min-width: 180px;
+    width: 180px;
+    padding: 1.8rem;
+    transform: scale(1.15);
+}
+
+.scholar-profile.featured-scholar .scholar-image {
+    width: 120px;
+    height: 120px;
+    border-width: 4px;
+    box-shadow: 0 12px 48px rgba(255, 193, 7, 0.4);
+}
+
+.scholar-profile.featured-scholar .scholar-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.scholar-profile.featured-scholar:hover {
+    transform: scale(1.25) translateY(-12px);
+    box-shadow: 0 20px 60px rgba(255, 193, 7, 0.3);
+}
+/* ===== HAMBURGER MENU ===== */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    gap: 6px;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.menu-toggle:hover span {
+    background: #FFD700;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+    background: #FFD700;
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+    background: #FFD700;
+}
+.basmala{
+    font-family:'MushafMakki', serif;
+    font-size:36px;
+    text-align:center;
+    margin-bottom:30px;
+}
+.basmala{
+    text-align:center;
+    font-size:26px;
+    margin:25px 0;
+    font-weight:bold;
+}
+
+.ayah{
+    display:inline-block;
+    margin:10px;
+    line-height:2.2;
+    transition:.3s;
+}
+
+.active-ayah{
+    background:#ffe08a;
+    border-radius:12px;
+    padding:6px 10px;
+}
+
+
+@media (max-width: 768px) {
+
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: rgba(26, 15, 53, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 30px 20px;
+        display: none;
+        z-index: 2000000;
+        border-top: 1px solid rgba(255, 193, 7, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: slideDownMenu 0.3s ease;
+    }
+
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 15px 20px;
+        margin: 5px 0;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-size: 18px;
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 193, 7, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .reading-area {
+        padding: 25px;
+        font-size: 18px;
+    }
+
+}
+
+@keyframes slideDownMenu {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

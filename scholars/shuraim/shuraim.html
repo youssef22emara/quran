@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> الشيخ سعود الشريم - القرآن الكريم</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../scholar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="../../imges/quran.ico">
+</head>
+<body>
+       <header class="header" id="header">
+      <div class="header-logo">
+        <div class="logo-icon">🕌</div>
+        <div class="logo-name">
+          نور الحياة
+          <span>Noor Al-Hayat</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a href="../../index.html" class="icon-btn" title="الرئيسية" aria-label="الرئيسية">🏠</a>
+        <button class="icon-btn" id="themeBtn" title="الوضع الداكن" aria-label="الوضع الداكن">🌙</button>
+      </div>
+    </header>
+
+    <div class="scholar-page">
+        <div class="scholar-header">
+            <img src="../../imges/shuraim.jpeg" alt="الشيخ سعود الشريم" class="scholar-image">
+            <div class="scholar-info">
+                <h1>الشيخ سعود الشريم</h1>                
+            </div>
+        </div>
+
+        <div class="audio-section">
+             <div class="audio-player">
+                <div class="disc">
+                    <div class="disc-ring"></div>
+                    <img src="../../imges/shuraim.jpeg" alt="الشيخ سعود الشريم" class="player-image disc-image">
+                </div>
+                <h3 id="current-surah">اختر سورة للاستماع</h3>
+                <div class="controls main-controls">
+                    <div class="control-item">
+                        <a id="download-btn" class="btn btn-download" href="#" download title="تحميل"><i class="fa-solid fa-download"></i></a>
+                        <span class="control-label">تحميل</span>
+                    </div>
+                    <div class="control-item">
+                        <button id="play-pause" class="btn btn-play" aria-label="تشغيل/إيقاف"><i class="fa-solid fa-play"></i></button>
+                        <span class="control-label">تشغيل / إيقاف</span>
+                    </div>
+                    <div class="control-item">
+                        <button id="repeat-btn" type="button" class="btn btn-repeat" title="تكرار السورة" aria-pressed="false"><i class="fa-solid fa-repeat"></i></button>
+                        <span class="control-label">تكرار</span>
+                    </div>
+                </div>
+                <div class="progress-row">
+                    <span id="current-time">00:00</span>
+                    <input type="range" id="progress" min="0" max="100" value="0">
+                    <span id="duration">00:00</span>
+                </div>
+                <audio id="quran-audio">
+                    <source src="" type="audio/mpeg">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <div class="surah-list">
+                <h2>اختر سورة للاستماع</h2>
+                <ul>
+                    <li>سورة الفاتحة</li>
+                    <li>سورة البقرة</li>
+                    <li>سورة آل عمران</li>
+                    <li>سورة النساء</li>
+                    <li>سورة المائدة</li>
+                    <li>سورة الأنعام</li>
+                    <li>سورة الأعراف</li>
+                    <li>سورة الأنفال</li>
+                    <li>سورة التوبة</li>
+                    <li>سورة يونس</li>
+                    <li>سورة هود</li>
+                    <li>سورة يوسف</li>
+                    <li>سورة الرعد</li>
+                    <li>سورة إبراهيم</li>
+                    <li>سورة الحجر</li>
+                    <li>سورة النحل</li>
+                    <li>سورة الإسراء</li>
+                    <li>سورة الكهف</li>
+                    <li>سورة مريم</li>
+                    <li>سورة طه</li>
+                    <li>سورة الأنبياء</li>
+                    <li>سورة الحج</li>
+                    <li>سورة المؤمنون</li>
+                    <li>سورة النور</li>
+                    <li>سورة الفرقان</li>
+                    <li>سورة الشعراء</li>
+                    <li>سورة النمل</li>
+                    <li>سورة القصص</li>
+                    <li>سورة العنكبوت</li>
+                    <li>سورة الروم</li>
+                    <li>سورة لقمان</li>
+                    <li>سورة السجدة</li>
+                    <li>سورة الأحزاب</li>
+                    <li>سورة سبأ</li>
+                    <li>سورة فاطر</li>
+                    <li>سورة يس</li>
+                    <li>سورة الصافات</li>
+                    <li>سورة ص</li>
+                    <li>سورة الزمر</li>
+                    <li>سورة غافر</li>
+                    <li>سورة فصلت</li>
+                    <li>سورة الشورى</li>
+                    <li>سورة الزخرف</li>
+                    <li>سورة الدخان</li>
+                    <li>سورة الجاثية</li>
+                    <li>سورة الأحقاف</li>
+                    <li>سورة محمد</li>
+                    <li>سورة الفتح</li>
+                    <li>سورة الحجرات</li>
+                    <li>سورة ق</li>
+                    <li>سورة الذاريات</li>
+                    <li>سورة الطور</li>
+                    <li>سورة النجم</li>
+                    <li>سورة القمر</li>
+                    <li>سورة الرحمن</li>
+                    <li>سورة الواقعة</li>
+                    <li>سورة الحديد</li>
+                    <li>سورة المجادلة</li>
+                    <li>سورة الحشر</li>
+                    <li>سورة الممتحنة</li>
+                    <li>سورة الصف</li>
+                    <li>سورة الجمعة</li>
+                    <li>سورة المنافقون</li>
+                    <li>سورة التغابن</li>
+                    <li>سورة الطلاق</li>
+                    <li>سورة التحريم</li>
+                    <li>سورة الملك</li>
+                    <li>سورة القلم</li>
+                    <li>سورة الحاقة</li>
+                    <li>سورة المعارج</li>
+                    <li>سورة نوح</li>
+                    <li>سورة الجن</li>
+                    <li>سورة المزمل</li>
+                    <li>سورة المدثر</li>
+                    <li>سورة القيامة</li>
+                    <li>سورة الإنسان</li>
+                    <li>سورة المرسلات</li>
+                    <li>سورة النبأ</li>
+                    <li>سورة النازعات</li>
+                    <li>سورة عبس</li>
+                    <li>سورة التكوير</li>
+                    <li>سورة الانفطار</li>
+                    <li>سورة المطففين</li>
+                    <li>سورة الانشقاق</li>
+                    <li>سورة البروج</li>
+                    <li>سورة الطارق</li>
+                    <li>سورة الأعلى</li>
+                    <li>سورة الغاشية</li>
+                    <li>سورة الفجر</li>
+                    <li>سورة البلد</li>
+                    <li>سورة الشمس</li>
+                    <li>سورة الليل</li>
+                    <li>سورة الضحى</li>
+                    <li>سورة الشرح</li>
+                    <li>سورة التين</li>
+                    <li>سورة العلق</li>
+                    <li>سورة القدر</li>
+                    <li>سورة البينة</li>
+                    <li>سورة الزلزلة</li>
+                    <li>سورة العاديات</li>
+                    <li>سورة القارعة</li>
+                    <li>سورة التكاثر</li>
+                    <li>سورة العصر</li>
+                    <li>سورة الهمزة</li>
+                    <li>سورة الفيل</li>
+                    <li>سورة قريش</li>
+                    <li>سورة الماعون</li>
+                    <li>سورة الكوثر</li>
+                    <li>سورة الكافرون</li>
+                    <li>سورة النصر</li>
+                    <li>سورة المسد</li>
+                    <li>سورة الإخلاص</li>
+                    <li>سورة الفلق</li>
+                    <li>سورة الناس</li>
+                </ul>
+            </div>
+           
+        </div>
+    </div>
+
+    <script src="shuraim.js"></script>
+    <script src="../../js/main.js"></script>
+<!-- ============ BOTTOM NAV ============ -->
+<nav class="bottom-nav">
+  <a href="../../index.html" class="nav-item">
+    <span class="nav-icon">🏠</span>
+    <span>الرئيسية</span>
+  </a>
+  <a href="../../المصحف/quran.html" class="nav-item">
+    <span class="nav-icon">📖</span>
+    <span>المصحف</span>
+  </a>
+  <a href="../../zekr/azkar.html" class="nav-item">
+    <span class="nav-icon">📿</span>
+    <span>الأذكار</span>
+  </a>
+  <a href="../../prayer-times.html" class="nav-item">
+    <span class="nav-icon">🕐</span>
+    <span>الصلاة</span>
+  </a>
+  <a href="../../ramadan.html" class="nav-item">
+    <span class="nav-icon">🌙</span>
+    <span>رمضان</span>
+  </a>
+  <a href="../../eid.html" class="nav-item">
+    <span class="nav-icon">🎊</span>
+    <span>العيد</span>
+  </a>
+</nav></body>
+</html> 
+
+
+
+
+
