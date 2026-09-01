@@ -5,38 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#1a0f35">
 
-<link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="quran-style.css">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="quran.css">
 <link rel="shortcut icon" href="../imges/logo.ico" type="image/x-icon">
 <title>المصحف الإلكتروني</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Amiri+Quran&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
 
 <body>
 
-<header class="header" id="header">
-  <div class="header-logo">
-    <div class="logo-icon"><img src="../imges/logo.ico" alt=""></div>
-    <div class="logo-name">
-      نور الحياة
-      <span>Noor Al-Hayat</span>
-    </div>
-  </div>
-  <div class="header-actions">
-    <button class="icon-btn" id="searchBtn" title="بحث" aria-label="بحث">🔍</button>
-    <button class="icon-btn" id="themeBtn" title="تبديل الوضع" aria-label="تبديل الوضع">🌙</button>
-  </div>
-</header>
+<site-header></site-header>
 
-<div class="search-overlay" id="searchOverlay">
-  <div class="search-box">
-    <input class="search-input" id="searchInput" type="text" placeholder="ابحث في الموقع...">
-    <div class="search-results" id="searchResults"></div>
-  </div>
-</div>
 
 <!-- ===== مشغل الصوت الثابت ===== -->
 <div class="audio-player collapsed" id="audioPlayer">
@@ -234,35 +216,10 @@
   </div>
 </main>
 
-<nav class="bottom-nav">
-  <a href="../index.html" class="nav-item">
-    <span class="nav-icon">🏠</span>
-    <span>الرئيسية</span>
-  </a>
-  <a href="quran.html" class="nav-item active">
-    <span class="nav-icon">📖</span>
-    <span>المصحف</span>
-  </a>
-  <a href="../zekr/azkar.html" class="nav-item">
-    <span class="nav-icon">📿</span>
-    <span>الأذكار</span>
-  </a>
-  <a href="../prayer-times.html" class="nav-item">
-    <span class="nav-icon">🕐</span>
-    <span>الصلاة</span>
-  </a>
-  <a href="../ramadan.html" class="nav-item">
-    <span class="nav-icon">🌙</span>
-    <span>رمضان</span>
-  </a>
-  <a href="../eid.html" class="nav-item">
-    <span class="nav-icon">🎊</span>
-    <span>العيد</span>
-  </a>
-</nav>
+<bottom-nav></bottom-nav>
 
 <script src="../js/site-ui.js"></script>
 <script src="quran-js.js"></script>
-
+<script src="../js/components.js"></script>
 </body>
 </html>
