@@ -1585,7 +1585,77 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .empty-surah-state span {
   font-size: 10px;
 }
-
+.aboutme {
+  margin: 10px auto;
+  width: 90%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  gap: 10px;
+}
+.aboutme .my_photo{
+  border-radius: 10%;
+  width: 200px;
+  height: 200px;
+}
+.aboutme .my_photo img {
+  width: 100%; 
+  border-radius: 10%;
+}
+.aboutme .info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: column;
+  text-align: center;
+}
+.aboutme .info p span a {
+  text-decoration: solid;
+  color: #0000be;
+  transition: .3s ease;
+}
+.aboutme .info p span a:hover {
+  color: #0000e4;
+}
+.aboutme .contact_me {
+  background: var(--bg3);
+  border-radius: 10%;
+  display: flex;
+}
+.aboutme .contact_me a {
+  padding: 10px;
+  transition: 0.3s ease;
+}
+.aboutme .contact_me a:hover {
+  scale: 1.1;
+}
+.aboutme .contact_me img {
+  width: 50px;
+  height: 50px;
+}
+.aboutme-icon {
+  position: fixed;
+  right: 10px;
+  bottom: 75px;
+  border-radius: 50%;
+  background-color: var(--bg3);
+  border: 2px solid var(--border2);
+  transition: 0.3s ease;
+}
+.aboutme-icon:hover {
+  scale: 1.1;
+}
+.aboutme-icon i{
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @media (max-width: 820px) {
   .futuristic-audio-layout {
     grid-template-columns: 1fr;
