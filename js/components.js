@@ -47,6 +47,11 @@ class BottomNav extends HTMLElement {
                     <span>المصحف</span>
                 </a>
 
+                <a href="/tasbeeh/tasbeeh.html" class="nav-item" data-page="eid">
+                    <span class="nav-icon"><i class="fa-solid fa-hands-praying"></i></span>
+                    <span>سبحة</span>
+                </a>
+
                 <a href="/zekr/azkar.html" class="nav-item" data-page="azkar">
                     <span class="nav-icon"><i class="fa-solid fa-person-praying"></i></span>
                     <span>الأذكار</span>
@@ -62,10 +67,6 @@ class BottomNav extends HTMLElement {
                     <span>رمضان</span>
                 </a>
 
-                <a href="/eid.html" class="nav-item" data-page="eid">
-                    <span class="nav-icon"><i class="fa-solid fa-cake-candles"></i></span>
-                    <span>العيد</span>
-                </a>
             </nav>
         `;
 

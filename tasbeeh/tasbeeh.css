@@ -1,0 +1,324 @@
+/* ==========================================================
+   السبحة الإلكترونية
+   كل الكلاسات بادئة بـ tsb- عشان ما تتعارضش مع styles.css
+========================================================== */
+
+.tsb {
+  --tsb-bead-off: var(--border2);
+  --tsb-adhkar-font: 'Amiri', 'Amiri Quran', serif;
+  padding-bottom: 32px;
+}
+
+.tsb > .section-title { margin-bottom: 14px; }
+
+/* ---------- الكارت الرئيسي ---------- */
+.tsb-stage {
+  scroll-margin-top: calc(var(--header-h) + 12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 22px 16px 20px;
+  margin-bottom: 28px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+}
+
+.tsb-tag {
+  padding: 4px 14px;
+  border-radius: 99px;
+  background: var(--emerald-glow);
+  color: var(--emerald-dark);
+  font-size: 12px;
+  font-weight: 600;
+}
+[data-theme="dark"] .tsb-tag { color: var(--emerald-light); }
+
+.tsb-text {
+  margin-top: 14px;
+  max-width: 34ch;
+  font-family: var(--tsb-adhkar-font);
+  font-size: clamp(22px, 6vw, 28px);
+  font-weight: 700;
+  line-height: 2;
+  text-align: center;
+  color: var(--text);
+}
+
+.tsb-note {
+  margin-top: 4px;
+  max-width: 36ch;
+  font-size: 13px;
+  line-height: 1.8;
+  text-align: center;
+  color: var(--text3);
+}
+
+/* ---------- السبحة: حلقة الخرز + كرة العدّ ---------- */
+.tsb-dial {
+  position: relative;
+  width: min(300px, 82vw);
+  aspect-ratio: 1;
+  margin: 14px auto 10px;
+}
+
+.tsb-beads {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.tsb-bead {
+  fill: var(--tsb-bead-off);
+  transition: fill 0.2s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.tsb-bead.is-lit {
+  fill: var(--emerald);
+  filter: drop-shadow(0 0 3px var(--emerald));
+}
+
+.tsb-bead.pop { animation: tsb-pop 0.28s ease-out; }
+
+@keyframes tsb-pop {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.7); }
+  100% { transform: scale(1); }
+}
+
+.tsb-tap {
+  position: absolute;
+  inset: 17%;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #fff;
+  background: radial-gradient(circle at 32% 26%, var(--emerald-light), var(--emerald) 48%, var(--emerald-dark) 100%);
+  box-shadow:
+    0 14px 34px rgba(16, 185, 129, 0.35),
+    inset 0 -10px 20px rgba(0, 0, 0, 0.18),
+    inset 0 6px 12px rgba(255, 255, 255, 0.28);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tsb-tap:active {
+  transform: scale(0.965);
+  box-shadow:
+    0 6px 16px rgba(16, 185, 129, 0.3),
+    inset 0 -6px 14px rgba(0, 0, 0, 0.22),
+    inset 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+.tsb-tap:focus-visible {
+  outline: 3px solid var(--emerald-light);
+  outline-offset: 4px;
+}
+
+.tsb-count {
+  font-size: clamp(48px, 16vw, 66px);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tsb-goal {
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.92;
+}
+
+.tsb-dial.is-pulse .tsb-tap { animation: tsb-done 0.7s ease-out; }
+
+@keyframes tsb-done {
+  0%   { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55), 0 14px 34px rgba(16, 185, 129, 0.35); }
+  100% { box-shadow: 0 0 0 26px rgba(16, 185, 129, 0), 0 14px 34px rgba(16, 185, 129, 0.35); }
+}
+
+/* ---------- الأزرار تحت العدّاد ---------- */
+.tsb-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.tsb-btn {
+  flex: 1 1 0;
+  max-width: 160px;
+  height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  color: var(--text2);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.tsb-btn[hidden] { display: none; }
+.tsb-btn:hover { border-color: var(--emerald); color: var(--emerald); }
+.tsb-btn:active { transform: scale(0.96); }
+.tsb-btn:focus-visible { outline: 2px solid var(--emerald); outline-offset: 2px; }
+
+.tsb-btn[aria-pressed="true"] {
+  background: var(--emerald-glow2);
+  border-color: var(--border2);
+  color: var(--emerald-dark);
+}
+[data-theme="dark"] .tsb-btn[aria-pressed="true"] { color: var(--emerald-light); }
+
+.tsb-btn.is-armed {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+}
+
+.tsb-btn--accent,
+.tsb-btn--accent:hover {
+  background: var(--emerald);
+  border-color: var(--emerald);
+  color: #fff;
+}
+.tsb-btn--accent:hover { background: var(--emerald-dark); }
+
+/* ---------- اختيار الذكر ---------- */
+.tsb-cats {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tsb-cats::-webkit-scrollbar { display: none; }
+
+.tsb-cat {
+  flex-shrink: 0;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text2);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.tsb-cat[aria-pressed="true"] {
+  background: var(--emerald);
+  border-color: var(--emerald);
+  color: #fff;
+}
+
+.tsb-cat:focus-visible { outline: 2px solid var(--emerald); outline-offset: 2px; }
+
+.tsb-catdesc {
+  margin-bottom: 12px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text3);
+}
+.tsb-catdesc[hidden] { display: none; }
+
+.tsb-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tsb-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 12px;
+  align-items: center;
+  padding: 14px 16px;
+  text-align: right;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.tsb-item:hover { border-color: var(--border2); }
+.tsb-item:focus-visible { outline: 2px solid var(--emerald); outline-offset: 2px; }
+
+.tsb-item[aria-pressed="true"] {
+  background: var(--emerald-glow2);
+  border-color: var(--emerald);
+}
+
+.tsb-item-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.tsb-item-goal {
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--bg3);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text3);
+  white-space: nowrap;
+}
+
+.tsb-item-text {
+  grid-column: 1 / -1;
+  font-family: var(--tsb-adhkar-font);
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text2);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tsb-item-count {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--emerald-dark);
+}
+[data-theme="dark"] .tsb-item-count { color: var(--emerald-light); }
+.tsb-item-count[hidden] { display: none; }
+
+/* للقارئات الصوتية فقط */
+.tsb-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tsb-bead.pop,
+  .tsb-dial.is-pulse .tsb-tap { animation: none; }
+  .tsb-tap, .tsb-bead { transition: none; }
+}

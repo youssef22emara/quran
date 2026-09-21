@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10b981" />
+    <title>السبحة الإلكترونية | نور الحياة</title>
+    <meta name="description" content="سبحة إلكترونية بأذكار وتسابيح مختارة وعدّاد يحفظ عدّك" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="tasbeeh.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="shortcut icon" href="../imges/logo.ico" type="../image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <site-header></site-header>
+
+    <!-- ============ MAIN ============ -->
+    <main class="main tsb">
+
+      <h1 class="section-title">السبحة الإلكترونية</h1>
+
+      <!-- العدّاد -->
+      <section class="tsb-stage" id="tsbStage" aria-label="العدّاد">
+        <span class="tsb-tag" id="tsbTag"></span>
+        <p class="tsb-text" id="tsbText"></p>
+        <p class="tsb-note" id="tsbNote" hidden></p>
+
+        <div class="tsb-dial" id="tsbDial">
+          <svg class="tsb-beads" id="tsbBeads" viewBox="0 0 300 300" aria-hidden="true"></svg>
+          <button class="tsb-tap" id="tsbTap" type="button" aria-label="سبّح">
+            <span class="tsb-count" id="tsbCount">٠</span>
+            <span class="tsb-goal" id="tsbGoal"></span>
+          </button>
+        </div>
+
+        <div class="tsb-actions">
+          <button class="tsb-btn" id="tsbReset" type="button">
+            <i class="fas fa-rotate-left"></i><span>إعادة العدّ</span>
+          </button>
+          <button class="tsb-btn tsb-btn--accent" id="tsbNext" type="button" hidden>
+            <span>الذكر التالي</span><i class="fas fa-arrow-left"></i>
+          </button>
+          <button class="tsb-btn" id="tsbHaptic" type="button" aria-pressed="true">
+            <i class="fas fa-mobile-screen-button"></i><span>اهتزاز</span>
+          </button>
+        </div>
+
+        <p class="tsb-sr" id="tsbStatus" role="status"></p>
+      </section>
+
+      <!-- اختيار الذكر -->
+      <section class="tsb-picker" aria-label="اختيار الذكر">
+        <h2 class="section-title">اختر الذكر</h2>
+        <div class="tsb-cats" id="tsbCats"></div>
+        <p class="tsb-catdesc" id="tsbCatDesc" hidden></p>
+        <ul class="tsb-list" id="tsbList"></ul>
+      </section>
+
+    </main>
+
+    <bottom-nav></bottom-nav>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/site-ui.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="tasbeeh.js"></script>
+  </body>
+</html>
