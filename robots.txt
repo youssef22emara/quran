@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap:https://muslim.giize.com/sitemap.xml
